@@ -6,9 +6,7 @@ Practice setting:
 * set_part {xcu50-fsvh2104-2L-e}
 * c-synthesis with "Vivado IP Flow Target"
 
-**ATTENTION:**
-
-All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*2 address (like tmp1[128][2]) after implimented, the odd writing from 0~127 address and even take different bank inside, and that is why ```double_pass``` and ```pass``` can work overlaping in ```middle_pass.problem```. It is OK for FPGA, but not good for ASIC.
+**ATTENTION:** All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*2 address (like tmp1[128][2]) after implimented, the odd writing from 0~127 address and even take different bank inside, and that is why ```double_pass``` and ```pass``` can work overlaping in ```middle_pass.problem```. It is OK for FPGA, but not good for ASIC.
 
 ## input_bypass
 
@@ -92,6 +90,8 @@ All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*
 
   ![Alt](pics/middle_bypass.prob.resource.jpg)
 
+  * cosim result
+
   ```log
   ////////////////////////////////////////////////////////////////////////////////////
   // RTL Simulation : 0 / 4 [0.00%] @ "125000"
@@ -114,6 +114,8 @@ All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*
 
   ![Alt](pics/middle_bypass.sol.resource.jpg)
 
+  * cosim result
+
   ```log
   ////////////////////////////////////////////////////////////////////////////////////
   // RTL Simulation : 0 / 4 [0.00%] @ "125000"
@@ -130,7 +132,13 @@ All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*
 
   * [source code](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/blob/master/Dataflow/Bypassing/output_bypass/dut.cpp)
 
-  No parallel working at all, not lake middle_bypass, there is no add_kernel can be used to predict working flow.
+  * functional block diagram
+
+  ![Alt](pics/output_bypass.prob.func.jpg)
+
+  * cosim result
+
+    No parallel working at all, not lake middle_bypass, that is weird.
 
   ```log
   ////////////////////////////////////////////////////////////////////////////////////
@@ -142,9 +150,17 @@ All the memory like ```tmp1[128]/tmp2[128]/tmpX[128]``` are structured with 128*
   ////////////////////////////////////////////////////////////////////////////////////
   ```
 
+  ![Alt](pics/output_bypass.prob.timing.jpg)
+
 * solution
 
   * [source code](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/blob/master/Dataflow/Bypassing/output_bypass/dut_sol.cpp)
+
+  * functional block diagram
+
+  ![Alt](pics/output_bypass.sol.func.jpg)
+
+  * cosim result
 
   ```log
   ////////////////////////////////////////////////////////////////////////////////////
