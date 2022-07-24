@@ -6,6 +6,12 @@
 * set_part {xcu50-fsvh2104-2L-e}
 * c-synthesis with "Vivado IP Flow Target"
 
+## pragma
+
+* [#pragma HLS performance target_ti](https://docs.xilinx.com/r/en-US/ug1399-vitis-hls/pragma-HLS-performance)
+
+* [#pragma HLS LOOP_TRIPCOUNT max](https://docs.xilinx.com/r/en-US/ug1399-vitis-hls/pragma-HLS-loop_tripcount)
+
 ## illustration
 
 * [source code](https://github.com/Xilinx/Vitis-HLS-Introductory-Examples/blob/master/Dataflow/Channels/using_fifos)
